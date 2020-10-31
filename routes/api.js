@@ -35,4 +35,9 @@ router.post("/api/workouts", (req, res) => {
       });
   });
 
+//Update Previous or Current Workout
+  router.put("/api/workouts/:id", ({ body, params }, res) => {
+
+  });
+
 module.exports = router;
