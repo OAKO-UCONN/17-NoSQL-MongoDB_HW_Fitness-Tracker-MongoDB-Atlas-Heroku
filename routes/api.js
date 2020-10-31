@@ -36,8 +36,17 @@ router.post("/api/workouts", (req, res) => {
   });
 
 //Update Previous or Current Workout
-  router.put("/api/workouts/:id", ({ body, params }, res) => {
-
-  });
+router.put("/api/workouts/:id", ({ body, params }, res) => {
+    Workout.findByIdAndUpdate(
+        params.id, { $push: { exercises: body } },
+        //Checks that the input is valid for the DB Schema.
+        { new: true, runValidators: true}
+    )
+        .then((data) => res.json(data))
+        .catch((err)) => {
+            console.log("err", err);
+            res.json(err);
+        });
+});
 
 module.exports = router;
