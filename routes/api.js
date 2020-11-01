@@ -44,6 +44,7 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
       { new: true, runValidators: true }
     )
       .then((data) => res.json(data))
+      //Error Handling if invalid 
       .catch((err) => {
         console.log("err", err);
         res.json(err);
